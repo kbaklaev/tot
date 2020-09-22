@@ -4,7 +4,7 @@ const ChatInput = ({ cb, initMessage }) => {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    setMessage(initMessage.message)
+    if (initMessage.message) setMessage(initMessage.message)
   }, [initMessage])
 
   const sendMessageHandleClick = () => {
@@ -19,9 +19,9 @@ const ChatInput = ({ cb, initMessage }) => {
   };
 
   return (
-    <div className="p-4 w-full border-blue-300 border-width-2 flex">
+    <div className="p-4 w-full border-blue-300 border-width-2 flex gap-1">
       <input
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         type="text"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
@@ -30,7 +30,7 @@ const ChatInput = ({ cb, initMessage }) => {
       <button
         type="button"
         onClick={sendMessageHandleClick}
-        className="flex-shrink-0 border-transparent border-4 text-blue-500 hover:text-teal-800 text-sm py-1 px-2 rounded"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
         Отправить
       </button>

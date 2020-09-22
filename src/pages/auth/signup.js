@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
 
 import AuthButton from '../../components/auth-button'
 
 const Signup = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {

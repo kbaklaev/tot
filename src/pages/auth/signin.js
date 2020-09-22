@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
 
 import AuthButton from '../../components/auth-button';
 
 const Signin = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
-
+  
   const [error, setError] = useState('');
 
   const formik = useFormik({
@@ -25,6 +23,7 @@ const Signin = () => {
       ) {
         sessionStorage.setItem('Auth', true)
         history.push('/');
+        history.go()
       } else {
         setError('неверное имя пользователя или пароль');
       }
@@ -50,7 +49,6 @@ const Signin = () => {
               autoComplete="username"
               onChange={formik.handleChange}
               value={formik.values.username}
-              // onBlur={() => dispatch(setUserEmail(formik.values.username))}
               className="appearance-none bg-transparent border-b-2 border-blue-500 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none lowercase"
             />
           </div>

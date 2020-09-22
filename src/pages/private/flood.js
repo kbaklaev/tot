@@ -1,32 +1,52 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import ChatInput from '../../components/chat-input'
+import ChatInput from "../../components/chat-input";
+import Message from "../../components/message";
 
-import { setNewFloodMessage } from '../../redux/actions/flood-actions'
+import {
+  setNewFloodMessage,
+  editFloodMessage,
+  deleteFloodMessage,
+} from "../../redux/actions/flood-actions";
 
 const Flood = () => {
-  const dispatch = useDispatch()
-  const messages = useSelector(state => state.flood)
+  const dispatch = useDispatch();
+  const messages = useSelector((state) => state.flood);
+  const [message, setMessage] = useState({});
 
-  const user = atob(localStorage.getItem('User'))
+  const user = atob(localStorage.getItem("User"));
 
   return (
-    <div>
-      <section id="messages">
-        {messages.length &&
-          messages.map((message) => (
-            <div className="flex flex-col" key={message.id}>
-              <label className="font-bold">{message.username}</label>
-              <span>{message.message}</span>
-            </div>
-          ))}
+    <>
+      <section id="messages" className="mb-auto overflow-y-auto">
+        {messages.length
+          ? messages
+              .sort((a, b) => a.id - b.id)
+              .map((message) => (
+                <Message
+                  key={message.id}
+                  user={user}
+                  message={message}
+                  setMessage={setMessage}
+                  dispatch={dispatch}
+                  deleteWorkMessage={deleteFloodMessage}
+                />
+              ))
+          : null}
       </section>
-      <div className="flex content-end">
-        <ChatInput cb={(str) => dispatch(setNewFloodMessage(str, user))} />
+      <div className="w-full flex bg-blue-100">
+        <ChatInput
+          cb={(str, id) =>
+            id
+              ? dispatch(editFloodMessage(str, user, id))
+              : dispatch(setNewFloodMessage(str, user))
+          }
+          initMessage={message}
+        />
       </div>
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default Flood
+export default Flood;

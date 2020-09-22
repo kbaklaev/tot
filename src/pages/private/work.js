@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import ChatInput from "../../components/chat-input";
+import Message from "../../components/message";
 
 import {
   setNewWorkMessage,
@@ -17,36 +18,24 @@ const Work = () => {
   const user = atob(localStorage.getItem("User"));
 
   return (
-    <div>
-      <section id="messages">
-        {messages.length &&
-          messages
-            .sort((a, b) => a.id - b.id)
-            .map((message) => (
-              <div className="flex flex-col" key={message.id}>
-                <label className="font-bold">{message.username}</label>
-                <div>
-                  <span>{message.message}</span>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      user === message.username &&
-                      setMessage({ id: message.id, message: message.message })
-                    }
-                  >
-                    ...
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => dispatch(deleteWorkMessage(message.id))}
-                  >
-                    X
-                  </button>
-                </div>
-              </div>
-            ))}
+    <>
+      <section id="messages" className="mb-auto overflow-y-auto">
+        {messages.length
+          ? messages
+              .sort((a, b) => a.id - b.id)
+              .map((message) => (
+                <Message
+                  key={message.id}
+                  user={user}
+                  message={message}
+                  setMessage={setMessage}
+                  dispatch={dispatch}
+                  deleteWorkMessage={deleteWorkMessage}
+                />
+              ))
+          : null}
       </section>
-      <div className="flex content-end">
+      <div className="w-full flex bg-blue-100">
         <ChatInput
           cb={(str, id) =>
             id
@@ -56,7 +45,7 @@ const Work = () => {
           initMessage={message}
         />
       </div>
-    </div>
+    </>
   );
 };
 
