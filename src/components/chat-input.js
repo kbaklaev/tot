@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-const ChatInput = ({ cb }) => {
+const ChatInput = ({ cb, initMessage }) => {
   const [message, setMessage] = useState('')
 
+  useEffect(() => {
+    setMessage(initMessage.message)
+  }, [initMessage])
+
   const sendMessageHandleClick = () => {
-    cb(message)
+    cb(message, initMessage.id)
     setMessage('')
   }
 
   const onKeyDownHandler = (e) => {
     if (e.key === "Enter") {
-      cb(message)
-      setMessage('')
+      sendMessageHandleClick()
     }
   };
 
@@ -27,7 +30,7 @@ const ChatInput = ({ cb }) => {
       <button
         type="button"
         onClick={sendMessageHandleClick}
-        className="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded"
+        className="flex-shrink-0 border-transparent border-4 text-blue-500 hover:text-teal-800 text-sm py-1 px-2 rounded"
       >
         Отправить
       </button>
