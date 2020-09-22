@@ -1,4 +1,4 @@
-import { NEW_WORK_MESSAGE, EDIT_WORK_MESSAGE } from "../actions/work-actions";
+import { NEW_WORK_MESSAGE, EDIT_WORK_MESSAGE, DELETE_WORK_MESSAGE } from "../actions/work-actions";
 
 const initialStore = [
   {
@@ -33,6 +33,11 @@ const workReducer = (store = initialStore, action) => {
           username: action.username,
           message: action.message,
         }
+      ]
+
+    case DELETE_WORK_MESSAGE:
+      return [
+        ...store.filter(elem => elem.id !== action.id)
       ]
 
     default:
