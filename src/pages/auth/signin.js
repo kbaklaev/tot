@@ -17,12 +17,17 @@ const Signin = () => {
       password: '',
     },
     onSubmit: (values) => {
-      (btoa(localStorage.getItem('testUser')) === values.username &&
-        btoa(localStorage.getItem('testPwd')) === values.password) ||
-      (btoa(localStorage.getItem('User')) === values.username &&
-        btoa(localStorage.getItem('Password')) === values.password)
-        ? history.push('/home')
-        : setError('неверное имя пользователя или пароль');
+      if (
+        (atob(localStorage.getItem('testUser')) === values.username &&
+          atob(localStorage.getItem('testPwd')) === values.password) ||
+        (atob(localStorage.getItem('User')) === values.username &&
+          atob(localStorage.getItem('Password')) === values.password)
+      ) {
+        sessionStorage.setItem('Auth', true)
+        history.push('/');
+      } else {
+        setError('неверное имя пользователя или пароль');
+      }
     },
   });
 
