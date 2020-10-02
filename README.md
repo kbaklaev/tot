@@ -2,7 +2,7 @@
 
 # New Features!
 
-  - added registration and authorization
+  - added registration and authorization (fake auth with testuser@planktonics.ru:qwerty)
   - work chat and chat for flood
 
 ### Tech
@@ -28,7 +28,7 @@ For build...
 
 ```sh
 $ yarn build
-```
+``` 
 
    [ReactJS]: <https://reactjs.org/>
    [Redux]: <https://redux.js.org/>
