@@ -1,7 +1,7 @@
 import React from 'react'
 
-const AuthButton = ({title, agreement}) => {
-  const style = (title === 'создать профиль' && !agreement)
+const AuthButton = ({title}) => {
+  const style = (title === 'создать профиль')
     ? "bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed w-full sm:w-auto uppercase"
     : "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto uppercase"
 
@@ -10,7 +10,7 @@ const AuthButton = ({title, agreement}) => {
       <button
         className={style}
         type="submit"
-        disabled={title === 'создать профиль' && !agreement}
+        disabled={title === 'создать профиль'}
       >
         {title}
       </button>
@@ -18,4 +18,4 @@ const AuthButton = ({title, agreement}) => {
   )
 }
 
-export default AuthButton
+export default React.memo(AuthButton)

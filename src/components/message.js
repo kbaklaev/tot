@@ -1,5 +1,5 @@
 import React from "react";
-import { TiDeleteOutline, TiEdit } from 'react-icons/ti'
+import { TiDeleteOutline, TiEdit } from "react-icons/ti";
 
 const Message = ({
   user,
@@ -20,8 +20,12 @@ const Message = ({
       >
         <div className="grid">
           <div className="grid justify-items-start">
-            <label className="flex justify-center items-center text-gray-800 font-bold">{message.username}</label>
-            <span className="flex justify-center text-gray-800 items-center">{message.message}</span>
+            <label className="flex justify-center items-center text-gray-800 font-bold">
+              {message.username}
+            </label>
+            <span className="flex justify-center text-gray-800 items-center">
+              {message.message}
+            </span>
           </div>
           {user === message.username && (
             <div className="flex justify-end gap-4">
