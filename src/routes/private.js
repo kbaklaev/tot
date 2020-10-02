@@ -43,9 +43,9 @@ const Private = () => {
         </button>
       </div>
       <div className="w-full flex flex-col h-screen justify-between overflow-hidden text-center">
-        <div className="flex w-full h-24 text-xl text-gray-800 font-bold bg-blue-200 p-4 rounded-tr-lg justify-center">
+        <h1 className="flex w-full h-24 text-xl text-gray-800 font-bold bg-blue-200 p-4 rounded-tr-lg justify-center">
           {title}
-        </div>
+        </h1>
         <Switch>
           <Route exact path="/work" component={Work} />
           <Route exact path="/flood" component={Flood} />
