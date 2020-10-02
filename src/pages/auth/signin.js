@@ -34,8 +34,8 @@ const Signin = () => {
     <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-3 w-screen h-screen">
       <div className="w-full h-full col-start-1 lg:col-start-2 row-start-1 lg:row-start-2">
         <header className="text-blue-500 text-sm font-bold p-4 text-right">
-          <Link to="/signup" className="px-4">
-            СОЗДАТЬ ПРОФИЛЬ
+          <Link to="/signup" className="px-4 uppercase">
+            создать профиль
           </Link>
         </header>
         <h1 className="text-xl font-bold px-8">Вход пользователя</h1>
@@ -65,7 +65,7 @@ const Signin = () => {
             />
           </div>
           {error && <div className="text-red-600 text-center">{error}</div>}
-          <AuthButton title={'ВОЙТИ'} />
+          <AuthButton title="войти" />
         </form>
       </div>
     </div>

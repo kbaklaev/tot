@@ -23,8 +23,8 @@ const Signup = () => {
     <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-3 w-screen h-screen">
       <div className="w-full h-full col-start-1 lg:col-start-2 row-start-1 lg:row-start-2">
         <header className="text-blue-500 text-sm font-bold p-4 text-right">
-          <Link to="/signin" className="px-4">
-            ВОЙТИ
+          <Link to="/signin" className="px-4 uppercase">
+            войти
           </Link>
         </header>
         <h1 className="text-xl font-bold px-8">Регистрация пользователя</h1>
@@ -53,7 +53,7 @@ const Signup = () => {
               className="appearance-none bg-transparent border-b-2 border-blue-500 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
             />
           </div>
-          <AuthButton title={'СОЗДАТЬ'} />
+          <AuthButton title="создать" />
         </form>
       </div>
     </div>
